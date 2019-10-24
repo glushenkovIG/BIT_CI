@@ -4,11 +4,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class HelloController {
-    @RequestMapping("/")
+public class QuotesController {
+    @RequestMapping("/quotes")
     public String index() {
-        return "Greetings from Spring Bot!";
+        return "I’m returning quotes to you!";
     }
-    
 }
-

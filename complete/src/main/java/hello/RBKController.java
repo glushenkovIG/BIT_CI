@@ -4,11 +4,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class HelloController {
-    @RequestMapping("/")
-    public String index() {
-        return "Greetings from Spring Bot!";
+public class RBKController {
+    RBK rbk;
+    RBKController(){
+        this.rbk = new RBK();
     }
-    
-}
 
+    @RequestMapping("/rbk")
+    public String index() {
+        return rbk.getMax();
+    }
+}
