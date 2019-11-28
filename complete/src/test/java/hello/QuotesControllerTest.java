@@ -6,10 +6,11 @@ import static org.junit.Assert.*;
 
 public class QuotesControllerTest {
     @Test
-    void unit1(){
+    public void unit1(){
         HelloController helloController = new HelloController();
         helloController.index();
         QuotesController qc = new QuotesController();
+        return;
     }
 
 }

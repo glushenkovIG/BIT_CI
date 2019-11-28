@@ -8,21 +8,24 @@ import static org.junit.Assert.*;
 
 public class RBKTest {
     RBK rbk;
+
+    public RBKTest(){
+        rbk = new RBK();
+    }
+
     @Test
-    void unit1() {
+    public void unit1() {
         System.out.println("Correct start");
         RBK rbkMock = Mockito.mock(RBK.class);
         MyApplication app = new MyApplication(rbkMock);
         app.printCourse();
         Mockito.verify(rbkMock).getMax();
-
-        rbk = new RBK();
         app = new MyApplication(rbk);
         app.printCourse();
     }
 
     @Test
     public void getMax() {
-        Assert.assertTrue(Integer.getInteger(rbk.getMax()) > 60);
+        Assert.assertTrue(Double.parseDouble(rbk.getMax()) > 60);
     }
 }
