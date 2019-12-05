@@ -1,19 +1,21 @@
 package hello;
 
+import org.json.JSONException;
+import org.junit.Assert;
 import org.junit.Test;
 import org.mockito.Mockito;
 
 import java.io.IOException;
 
-public class RBKTest {
-    RBK rbk;
-
-    public RBKTest(){
-        rbk = new RBK();
+public class WeatherTest {
+    Weather weather;
+    public WeatherTest(){
+        this.weather = new Weather();
     }
 
+
     @Test
-    public void unit1() throws IOException {
+    public void unit1() throws IOException, JSONException {
         System.out.println("Correct start");
 
         RBK rbkMock = Mockito.mock(RBK.class);
@@ -21,11 +23,11 @@ public class RBKTest {
         ExchangePrediction exchangePredictionMock = Mockito.mock(ExchangePrediction.class);
 
         MyApplication app = new MyApplication(rbkMock, weatherMock, exchangePredictionMock);
-        app.printCourse();
-        Mockito.verify(rbkMock).getMax();
+        app.printWeather();
+        Mockito.verify(weatherMock).getWeatherFromRBK();
 
-        app = new MyApplication(rbk, weatherMock, exchangePredictionMock);
-        app.printCourse();
+        app = new MyApplication(rbkMock, weather, exchangePredictionMock);
+        Assert.assertTrue(weather.getWeatherFromRBK() < 100);
     }
 /*
     @Test

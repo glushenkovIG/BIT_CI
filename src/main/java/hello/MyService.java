@@ -13,7 +13,6 @@ class MyService implements Service{
 
     @Override
     public void save(List<String> data) {
-
     }
 
     @Override

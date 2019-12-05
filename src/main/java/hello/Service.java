@@ -9,7 +9,6 @@ interface Service {
 
     String getById(String id);
 
-
     List<String> getAll();
 
     List<String> getByRequest(Request request);
