@@ -1,7 +1,9 @@
 package hello;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
+@Ignore
 public class MyElasticSearchAdventuresTest {
     MyElasticSearchAdventures myElasticSearchAdventures = new MyElasticSearchAdventures();
 
