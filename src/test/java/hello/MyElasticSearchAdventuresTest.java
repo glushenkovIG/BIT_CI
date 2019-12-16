@@ -12,22 +12,31 @@ public class MyElasticSearchAdventuresTest {
 
     @Test
     public void test1(){
-        String s = "http://localhost:9200/mkyong/posts/1001";
-        String data = "{\n" +
-                "  \"title\": \"Spring + Spring Data + ElasticSearch\",\n" +
-                "  \"category\":\"Spring Boot\",\n" +
-                "  \"published_date\":\"23-MAR-2017\",\n" +
-                "  \"author\":\"Rambabu Posa\"\n" +
-                "}";
+        String data = "Test data 11111";
 
-        myElasticSearchAdventures.insert(s, data);
+        myElasticSearchAdventures.insert("key1", data);
+
     }
 
     @Test
     public void test2(){
-            String s = "http://localhost:9200/twitter/_doc/1?pretty";
-            String data = "{ \"user\": \"kimchy\", \"post_date\": \"2009-11-15T13:12:00\", \"message\": \"Trying out Elasticsearch, so far so good?\"}";
+            String data = "Test data 222222";
 
-            myElasticSearchAdventures.insert(s, data);
+            myElasticSearchAdventures.insert("key2", data);
+    }
+
+    @Test
+    public void get(){
+        myElasticSearchAdventures.get("key1");
+    }
+
+    @Test
+    public void getFromCache(){
+        String key = "key5";
+        String value = "Test data: " + key;
+
+        myElasticSearchAdventures.insert(key, value);
+        System.out.println(myElasticSearchAdventures.get(key));
+        System.out.println(myElasticSearchAdventures.get(key));
     }
 }

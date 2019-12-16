@@ -1,9 +1,8 @@
 package hello;
 
-import org.json.JSONException;
+import org.springframework.stereotype.Service;
 
-import java.io.IOException;
-
+@Service
 public class ExchangePrediction {
     Weather weather;
     public ExchangePrediction(){
@@ -11,11 +10,16 @@ public class ExchangePrediction {
     }
 
     public double predictExchange( double exchange){
+        return 0;
+
+        //TODO discomment this part
+        /*
         try {
             return (exchange  + weather.getWeatherFromRBK()) / 2;
         } catch (IOException | JSONException e) {
             e.printStackTrace();
         }
-        return 0;
+
+         */
     }
 }

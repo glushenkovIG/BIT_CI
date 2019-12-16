@@ -25,14 +25,16 @@ public class ExchangePredictionControllerTest {
         MyApplication app = new MyApplication(rbkMock, weatherMock, exchangePredictionMock);
         app.predictCourse(10);
         Mockito.verify(exchangePredictionMock).predictExchange(10);
+        app.predictCourse(10);
+
 
         Assert.assertTrue(exchangePrediction.predictExchange(10) < 100);
     }
-/*
-    @Test
-    public void getMax() {
-        Assert.assertTrue(Double.parseDouble(rbk.getMax()) > 60);
-    }
 
- */
+    @Test
+    public void getFromCache() {
+        double value = 10;
+        System.out.println(exchangePrediction.predictExchange(value));
+        System.out.println(exchangePrediction.predictExchange(value));
+    }
 }
