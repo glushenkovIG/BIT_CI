@@ -1,0 +1,14 @@
+version: "3"
+services:
+    rbk:
+        image: module_rbk
+        ports:
+            - "8181:8081"
+    weather:
+        image: module_weather
+        ports:
+            - "8182:8082"
+    predict:
+        image: module_predict
+        ports:
+            - "8183:8083"
