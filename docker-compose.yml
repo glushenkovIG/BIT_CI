@@ -1,14 +1,24 @@
 version: "3"
 services:
     rbk:
-        image: module_rbk
+        build: ./module_rbk
+        #volumes:
+          #  - ./module_rbk:/tmp
         ports:
             - "8181:8081"
     weather:
-        image: module_weather
+        build: ./module_weather
+        #volumes:
+          #  - ./module_weather:/tmp
         ports:
             - "8182:8082"
     predict:
-        image: module_predict
+        build: ./module_predict
+        #volumes:
+        #    - ./module_predict:/tmp
         ports:
             - "8183:8083"
+    db:
+        image: nicolas/webdis
+        ports:
+            - "8184:7379"

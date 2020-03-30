@@ -1,10 +1,10 @@
 *.*
 .*
-!src*
 !.mvn*
 !.gitignore
-!*.*
 !pom.xml
 !mvnw
 !mvnw.cmdv
 !.git*
+!m*
+*target*
