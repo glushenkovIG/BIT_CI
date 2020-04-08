@@ -1,7 +1,0 @@
----
-  -
-    hosts: all
-    tasks:
-      -
-        name: "Make GlushenkovIG directory for deploying"
-        shell: "mkdir ./edu/GlushenkovIG"
