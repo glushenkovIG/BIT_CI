@@ -3,5 +3,5 @@ COPY pom.xml /tmp/
 COPY src /tmp/src/
 WORKDIR /tmp/
 RUN mvn clean package
-
+ENV APP_HOST=8081
 CMD java -jar ./target/gs-spring-boot-0.1.0.jar

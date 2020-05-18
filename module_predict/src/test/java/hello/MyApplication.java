@@ -1,9 +1,8 @@
 package hello;
 
 import org.json.JSONException;
-import org.mockito.Mockito;
-
 import java.io.IOException;
+import static org.mockito.Mockito.*;
 
 class MyApplication {
 
@@ -11,11 +10,10 @@ class MyApplication {
     public Weather weather;
     public ExchangePrediction exchangePrediction;
 
-
     public MyApplication(){
-        this.rbk = Mockito.mock(RBK.class);
-        this.weather = Mockito.mock(Weather.class);
-        this.exchangePrediction = Mockito.mock(ExchangePrediction.class);
+        this.rbk = mock(RBK.class);
+        this.weather = mock(Weather.class);
+        this.exchangePrediction = mock(ExchangePrediction.class);
     }
 
     public MyApplication(RBK rbk, Weather weather, ExchangePrediction exchangePrediction) {

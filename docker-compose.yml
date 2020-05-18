@@ -1,23 +1,29 @@
+# docker-compose build
+# docker-compose up --build
+
 version: "3"
 services:
     rbk:
         build: ./module_rbk
+        image: module_rbk
         #volumes:
           #  - ./module_rbk:/tmp
         ports:
             - "8181:8081"
     weather:
         build: ./module_weather
+        image: module_weather
         #volumes:
           #  - ./module_weather:/tmp
         ports:
-            - "8182:8082"
+            - "8182:8081"
     predict:
         build: ./module_predict
+        image: module_predict
         #volumes:
         #    - ./module_predict:/tmp
         ports:
-            - "8183:8083"
+            - "8183:8081"
     db:
         image: nicolas/webdis
         ports:
