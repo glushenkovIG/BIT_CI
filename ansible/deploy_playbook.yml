@@ -1,0 +1,75 @@
+---
+#  -
+#    hosts: all
+#    vars:
+#      mydirname: "edu/GlushenkovIG/"
+#    tasks:
+#      -
+#        name: "Clean the directory"
+#        shell: "rm -rf {{ mydirname }} && mkdir -p {{ mydirname }}"
+#      -
+#        name: "Stop && remove all docker containers."
+#        shell: "sudo docker ps -a -q | xargs -n 1 -P 8 -I {} sudo docker stop {} && sudo docker ps -a -q | xargs -n 1 -P 8 -I {} sudo docker rm {}"
+#      -
+#        name: "Remove all docker images."
+#        shell: "sudo docker images -q | xargs -n 1 -P 8 -I {} sudo docker rmi {}"
+  -
+    hosts: [dbservers]
+    become: yes
+    vars:
+      ansible_become_user: root
+      ansible_become_password: "aNSHaPi"
+      mydirname: "edu/GlushenkovIG/"
+
+    tasks:
+      -
+        name: "print something"
+        shell: "pwd"
+      -
+        name: "Clean the directory"
+        shell: "rm -rf {{ mydirname }} && mkdir -p {{ mydirname }}"
+      -
+        name: "Stop && remove all docker containers."
+        shell: "sudo docker ps -a -q | xargs -n 1 -P 8 -I {} sudo docker stop {} && sudo docker ps -a -q | xargs -n 1 -P 8 -I {} sudo docker rm {}"
+      -
+        name: "Remove all docker images."
+        shell: "sudo docker images -q | xargs -n 1 -P 8 -I {} sudo docker rmi {}"
+      -
+        name: "Copy db-service to server"
+        copy: "src=./db.tar dest={{ mydirname }} owner=edumfti mode=7777"
+      -
+        name: "Load db-service from image"
+        shell: "sudo docker load -i {{ mydirname}}/db.tar"
+      -
+        name: "Run db-service from image"
+        shell: "sudo docker run -d -p 8184:7379 nicolas/webdis:latest"
+  -
+    hosts: [infoservers]
+    become: yes
+    vars:
+      ansible_become_user: root
+      ansible_become_password: "cHONtic"
+      mydirname: "edu/GlushenkovIG/"
+
+    tasks:
+      -
+        name: "print something"
+        shell: "pwd"
+      -
+        name: "Clean the directory"
+        shell: "rm -rf {{ mydirname }} && mkdir -p {{ mydirname }}"
+      -
+        name: "Stop && remove all docker containers."
+        shell: "sudo docker ps -a -q | xargs -n 1 -P 8 -I {} sudo docker stop {} && sudo docker ps -a -q | xargs -n 1 -P 8 -I {} sudo docker rm {}"
+      -
+        name: "Remove all docker images."
+        shell: "sudo docker images -q | xargs -n 1 -P 8 -I {} sudo docker rmi {}"
+      -
+        name: "Copy rbk-service to rbkserver"
+        copy: "src=./rbk.tar dest=edu/GlushenkovIG/ owner=mftiedu mode=7777"
+      -
+        name: "Deploy rbk-service"
+        shell: "sudo docker load -i ./edu/GlushenkovIG/rbk.tar"
+      -
+        name: "Run rbk"
+        shell: "sudo docker run -d -p 8181:8081 bit_ci_github_rbk:latest"

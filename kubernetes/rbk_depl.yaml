@@ -1,0 +1,26 @@
+# deploy webdis
+# kubectl create -f rbk_depl.yaml
+# kubectl get deployment
+# kubectl describe deployment predict
+# kubectl expose deployment weather --type=LoadBalancer --port=8081
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rbk
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: rbk
+  template:
+    metadata:
+      labels:
+        app: rbk
+    spec:
+      containers:
+      - name: rbk
+        image: module_rbk
+        ports:
+        - containerPort: 8081
+        imagePullPolicy: Never

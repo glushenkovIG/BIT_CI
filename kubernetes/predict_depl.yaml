@@ -1,0 +1,26 @@
+# deploy webdis
+# kubectl create -f predict_depl.yaml
+# kubectl get deployment
+# kubectl describe deployment predict
+# kubectl expose deployment predict --type=LoadBalancer --port=8081
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: predict
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: predict
+  template:
+    metadata:
+      labels:
+        app: predict
+    spec:
+      containers:
+      - name: predict
+        image: module_predict
+        ports:
+        - containerPort: 8081
+        imagePullPolicy: Never

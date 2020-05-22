@@ -1,0 +1,19 @@
+# Load balance between replicas and nodes
+# kubectl create -f service.yaml
+# kubectl describe svc webapp1-svc
+# kubectl describe ing ingress-tutorial
+# kubectl expose deployment kube-boot --type=LoadBalancer --port=8081
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: webdis-svc
+  labels:
+    app: webdis
+spec:
+  ports:
+  - port: 7379
+    targetPort: 7379
+  selector:
+    app: webdis
+  type: LoadBalancer

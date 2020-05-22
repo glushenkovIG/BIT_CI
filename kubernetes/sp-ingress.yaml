@@ -1,0 +1,46 @@
+# dns server
+#
+# kubectl apply -f sp-ingress.yaml
+# minikube addons enable ingress
+# kubectl get ingress
+# kubectl describe ing ingress
+
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: ingress
+spec:
+  rules:
+  - host: rbk
+    http:
+      paths:
+        - backend:
+            serviceName: rbk
+            servicePort: 8081
+  - host: weather
+    http:
+      paths:
+      - backend:
+          serviceName: weather
+          servicePort: 8081
+  - host: db
+    http:
+      paths:
+      - backend:
+          serviceName: db
+          servicePort: 7379
+  - host: predict
+    http:
+      paths:
+      - backend:
+          serviceName: predict
+          servicePort: 8081
+
+#spec:
+#  rules:
+#  - http:
+#      paths:
+#      - path: /db
+#        backend:
+#          serviceName: db
+#          servicePort: 7379
