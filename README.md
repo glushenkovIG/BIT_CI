@@ -107,3 +107,4 @@ minikube addons enable ingress
 If your pod didn't start and stay in status `ErrImagePull`, then execute in terminal `cd` and rebuild docker-boot image and recreate pod (`kubectl delete -f kube/postgres.yaml` and `kubectl create -f kube/postgres.yaml`)
 
 # Лаба 7: Будем делать мониторинг и дашборды нашего приложения/сервиса.
+https://stackabuse.com/monitoring-spring-boot-apps-with-micrometer-prometheus-and-grafana/

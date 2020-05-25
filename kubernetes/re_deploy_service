@@ -1,5 +1,0 @@
-#! /usr/bin/env bash
-ls
-
-sudo kubectl delete -f $1
-sudo kubectl create -f $1

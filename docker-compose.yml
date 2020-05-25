@@ -28,3 +28,18 @@ services:
         image: nicolas/webdis
         ports:
             - "8184:7379"
+    prometheus:
+        image: prom/prometheus
+        container_name: prometheus1
+        volumes:
+          - ./module_predict/env/prometheus.yml:/etc/prometheus/prometheus.yml
+        ports:
+          - 7091:9090
+
+    grafana:
+        image: grafana/grafana
+        container_name: grafana1
+        ports:
+          - 2000:3000
+        env_file:
+          - ./module_predict/env/grafana.env
